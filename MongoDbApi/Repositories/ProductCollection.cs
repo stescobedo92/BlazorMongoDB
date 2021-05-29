@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDbApi.Models;
+using MongoDbApi.Model;
 
 namespace MongoDbApi.Repositories
 {

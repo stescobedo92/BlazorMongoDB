@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MongoDbApi.Models;
+using MongoDbApi.Model;
 using MongoDbApi.Repositories;
 
 namespace MongoDbApi.Controllers
