@@ -13,5 +13,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MongoDbApi.Data\MongoDbApi.Data.csproj" />
+  </ItemGroup>
+
 
 </Project>
