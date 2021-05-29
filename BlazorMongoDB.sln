@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDbApi", "MongoDbApi\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMongoDbClient", "BlazorMongoDbClient\BlazorMongoDbClient.csproj", "{CE57A1F2-08F7-41F6-9AEE-7618E9670B63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDbApi.Data", "MongoDbApi.Data\MongoDbApi.Data.csproj", "{272074A3-A595-4005-B636-2AF55333B683}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDbApi.Model", "MongoDbApi.Data\MongoDbApi.Model.csproj", "{272074A3-A595-4005-B636-2AF55333B683}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
