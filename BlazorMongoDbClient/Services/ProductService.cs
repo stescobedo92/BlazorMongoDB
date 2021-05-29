@@ -3,6 +3,8 @@ using System.Net.Http;
 using MongoDbApi.Model;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text;
 
 namespace BlazorMongoDbClient.Services
 {
@@ -10,24 +12,38 @@ namespace BlazorMongoDbClient.Services
     {
         private readonly HttpClient _httpClient;
 
-        public Task DeleteProduct(string id)
+        public ProductService(HttpClient httpClient)
         {
-            throw new NotImplementedException();
+            _httpClient = httpClient;
         }
 
-        public Task<IEnumerable<Product>> GetAllProducts()
+        public async Task DeleteProduct(string id)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync($"api/product/{id}");
         }
 
-        public Task<Product> GetProductDetails(string id)
+        public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Product>>(await _httpClient.GetStreamAsync($"api/product"),new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public Task SaveProduct(Product product)
+        public async Task<Product> GetProductDetails(string id)
         {
-            throw new NotImplementedException();
+            return await JsonSerializer.DeserializeAsync<Product>(await _httpClient.GetStreamAsync($"api/product/{id}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task SaveProduct(Product product)
+        {
+            var productJson = new StringContent(JsonSerializer.Serialize(product),Encoding.UTF8,"application/json");
+
+            if( product.Id == string.Empty)
+            {
+                await _httpClient.PostAsync("api/product",productJson);
+            }
+            else
+            {
+                await _httpClient.PutAsync($"api/product/{product.Id}", productJson);
+            }
         }
     }
 }
