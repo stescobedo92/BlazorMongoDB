@@ -32,7 +32,18 @@
 </EditForm>
 
 @code {
+    [Parameter]
+    public string id { get; set; }
+
     Product product = new Product();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(id))
+        {
+            product = await ProductService.GetProductDetails(id);
+        }
+    }
 
     protected async Task SaveProduct()
     {
