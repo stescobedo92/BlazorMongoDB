@@ -4,7 +4,7 @@
 
 <h3>ProductDetails</h3>
 
-<EditForm Model="@product">
+<EditForm Model="@product" OnInvalidSubmit="SaveProduct">
     <table class="table">
         <tr>
             <td>Name:</td>
