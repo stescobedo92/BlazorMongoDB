@@ -36,7 +36,7 @@ namespace BlazorMongoDbClient.Services
         {
             var productJson = new StringContent(JsonSerializer.Serialize(product),Encoding.UTF8,"application/json");
 
-            if( product.Id == string.Empty)
+            if(string.IsNullOrEmpty(product.Id))
             {
                 await _httpClient.PostAsync("api/product",productJson);
             }
